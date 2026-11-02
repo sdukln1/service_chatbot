@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>智能客服</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="chat-container">
+    <header class="chat-header">
+      <div class="avatar">客</div>
+      <div class="title">
+        <h1>智能客服</h1>
+        <span class="subtitle" id="status">正在连接服务...</span>
+      </div>
+      <select id="modelSelect" class="model-select" title="切换大模型"></select>
+    </header>
+
+    <main class="chat-window" id="chatWindow">
+      <div class="message bot">
+        <div class="bubble">您好，我是智能客服，请问有什么可以帮您？<br>您可以问我退货、保修、支付、物流等问题。</div>
+      </div>
+    </main>
+
+    <div class="quick-questions" id="quickQuestions"></div>
+
+    <footer class="chat-input">
+      <textarea
+        id="inputBox"
+        rows="1"
+        placeholder="请输入您的问题，按 Enter 发送..."
+      ></textarea>
+      <button id="sendBtn">发送</button>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

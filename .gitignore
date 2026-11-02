@@ -1,0 +1,10 @@
+data/chroma/
+data/models/
+data/feedback/
+debug/
+log/
+__pycache__/
+*.pyc
+.venv/
+.env
+.idea/

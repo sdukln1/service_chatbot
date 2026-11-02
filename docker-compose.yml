@@ -1,0 +1,79 @@
+services:
+  # 主应用：RAG 问答 + Web 前端
+  kbqa:
+    build: .
+    container_name: kbqa-app
+    ports:
+      - "8080:8080"
+    volumes:
+      # 知识库与运行时数据放卷里，改文档不用重建镜像
+      - ./data/knowledge:/app/data/knowledge
+      - ./data/chroma:/app/data/chroma
+      - ./data/models:/app/data/models
+      - ./log:/app/log
+      - ./data/feedback:/app/data/feedback
+    environment:
+      - KBQA_API_BASE=${KBQA_API_BASE:-http://localhost:8000/v1}
+      - KBQA_API_KEY=${KBQA_API_KEY}
+      - KBQA_LLM_MODEL=${KBQA_LLM_MODEL:-GLM-5.3-Flash}
+      - KBQA_LLM_MODELS=${KBQA_LLM_MODELS:-GLM-5.3-Flash,DeepSeek-V4-Flash-0731,GLM-5.3}
+      # 使用下方 vllm 服务时改为: http://vllm:8000/v1
+      - KBQA_LANGFUSE_ENABLED=${KBQA_LANGFUSE_ENABLED:-false}
+      - KBQA_LANGFUSE_HOST=${KBQA_LANGFUSE_HOST:-}
+      - KBQA_LANGFUSE_PUBLIC_KEY=${KBQA_LANGFUSE_PUBLIC_KEY:-}
+      - KBQA_LANGFUSE_SECRET_KEY=${KBQA_LANGFUSE_SECRET_KEY:-}
+    restart: unless-stopped
+
+  # 可选：本地 vLLM 推理服务（需 GPU），通过 --profile vllm 启用。
+  # 启用：docker compose --profile vllm up -d
+  vllm:
+    image: vllm/vllm-openai:latest
+    profiles: ["vllm"]
+    container_name: kbqa-vllm
+    ports:
+      - "8000:8000"
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    command: >
+      --model Qwen/Qwen2.5-7B-Instruct
+      --port 8000
+      --max-model-len 8192
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
+
+  # 可选：LangFuse 自托管（可观测性）。启用：docker compose --profile langfuse up -d
+  langfuse:
+    image: langfuse/langfuse:2
+    profiles: ["langfuse"]
+    container_name: kbqa-langfuse
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@langfuse-db:5432/langfuse
+      - NEXTAUTH_SECRET=mysecret
+      - SALT=mysalt
+      - NEXTAUTH_URL=http://localhost:3000
+    depends_on:
+      - langfuse-db
+    restart: unless-stopped
+
+  langfuse-db:
+    image: postgres:16
+    profiles: ["langfuse"]
+    container_name: kbqa-langfuse-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=langfuse
+    volumes:
+      - langfuse-db-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  langfuse-db:

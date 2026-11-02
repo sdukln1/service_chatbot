@@ -1,0 +1,22 @@
+[
+  {"question": "什么情况下可以无理由退货？", "ground_truth": "自签收之日起 7 天内，商品未使用且不影响二次销售的，可以申请无理由退货。定制类商品、生鲜食品、贴身衣物不支持无理由退货。", "source": "return_policy.md"},
+  {"question": "超过7天还能退货吗？", "ground_truth": "如商品存在质量问题，签收后 15 天内仍可申请质量问题退货，需提供照片或视频凭证。", "source": "return_policy.md"},
+  {"question": "退货流程是怎样的？", "ground_truth": "在 App 中进入我的订单，选择订单点击申请售后，选择退货原因提交申请，审核通过后按系统发送的退货地址寄回商品并填写物流单号，仓库验收合格后退款在1-3个工作日内原路退回。", "source": "return_policy.md"},
+  {"question": "退款多久能到账？", "ground_truth": "原路退回：支付宝、微信支付一般 1-3 个工作日到账，银行卡 3-7 个工作日到账。", "source": "return_policy.md"},
+  {"question": "用优惠券买的商品退款时优惠券会退回吗？", "ground_truth": "使用优惠券购买的订单，退款金额为实际支付金额，优惠券在有效期内会自动退回。", "source": "return_policy.md"},
+  {"question": "退货的运费谁承担？", "ground_truth": "质量问题退货由商家承担运费；无理由退货运费由买家自理，有运费险的除外。", "source": "return_policy.md"},
+  {"question": "手机保修多长时间？", "ground_truth": "数码产品（手机、平板、耳机）自签收之日起享受 12 个月保修。", "source": "warranty.md"},
+  {"question": "冰箱压缩机的保修期是多久？", "ground_truth": "家用电器整机保修 12 个月，核心部件（压缩机、电机）保修 36 个月。", "source": "warranty.md"},
+  {"question": "哪些情况不在保修范围内？", "ground_truth": "人为损坏（进水、摔落、私自拆机）、未按说明书要求使用造成的故障、超过保修期限的情况不在保修范围内。", "source": "warranty.md"},
+  {"question": "怎么申请维修？", "ground_truth": "在 App 中提交维修申请，描述故障情况并上传照片或视频，客服确认后提供寄修地址或安排上门服务，维修完成后设备寄回，寄回运费由商家承担。", "source": "warranty.md"},
+  {"question": "怎么查询我的保修状态？", "ground_truth": "在 App 中进入我的-售后服务，可查看所有维修单的进度和剩余保修期。", "source": "warranty.md"},
+  {"question": "收不到验证码怎么办？", "ground_truth": "请检查短信拦截，或尝试切换语音验证码。", "source": "account.md"},
+  {"question": "怎么更换绑定手机号？", "ground_truth": "进入我的-账号与安全-手机号，通过原手机号验证码验证身份后绑定新手机号；原手机号无法收短信可选人工申诉。每月仅可修改一次。", "source": "account.md"},
+  {"question": "注销账号需要满足什么条件？", "ground_truth": "账户余额为零、无进行中的订单和售后单、无未还清的分期账单。注销有 15 天冷静期，期间登录即撤销。", "source": "account.md"},
+  {"question": "会员等级怎么划分的？", "ground_truth": "会员分为普通、黄金、铂金、钻石四个等级，按近 12 个月消费金额升级，等级每月 1 日更新。黄金及以上享免运费券、专属客服和生日礼包。", "source": "account.md"},
+  {"question": "支持哪些支付方式？", "ground_truth": "支持微信支付、支付宝、银联云闪付、Apple Pay 以及平台礼品卡，部分大额商品支持分期付款。", "source": "payment.md"},
+  {"question": "支付失败怎么办？", "ground_truth": "检查支付账户余额或更换支付方式重试；确认网络正常；提示订单超时请重新下单（订单保留30分钟）；若银行卡扣款但订单未成功，款项 1-7 个工作日自动退回，无需重复支付。", "source": "payment.md"},
+  {"question": "可以开发票吗？", "ground_truth": "电子发票在下单时可选择开具，支付完成后 24 小时内发送至预留邮箱；补开需在订单完成后 90 天内，在订单的申请开票入口提交。", "source": "payment.md"},
+  {"question": "发货后还能修改收货地址吗？", "ground_truth": "发货前可在订单详情中自助修改；已发货无法修改，可拒收后重新下单，或联系在线客服协助拦截。", "source": "shipping.md"},
+  {"question": "物流显示已签收但我没收到货怎么办？", "ground_truth": "先检查代收点、快递柜，然后联系客服，我们会向物流公司发起核查，确认丢失后免费补发或全额退款。", "source": "shipping.md"}
+]

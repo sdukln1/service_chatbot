@@ -1,0 +1,49 @@
+{
+  "timestamp": "2026-09-05T17:50:44",
+  "model": "GLM-5.3-Flash",
+  "testset": "D:\\code\\learn\\test\\知识问答agent\\data\\eval\\testset.json",
+  "num_cases": 3,
+  "retrieval_source_hit_rate": 0.0,
+  "avg_latency_s": 5.73,
+  "ragas_scores": {
+    "faithfulness": 0.0,
+    "answer_relevancy": 0.0,
+    "context_precision": 0.0,
+    "context_recall": 0.0
+  },
+  "cases": [
+    {
+      "user_input": "什么情况下可以无理由退货？",
+      "retrieved_contexts": [],
+      "response": "ERROR: 'NoneType' object has no attribute 'generate'",
+      "reference": "自签收之日起 7 天内，商品未使用且不影响二次销售的，可以申请无理由退货。定制类商品、生鲜食品、贴身衣物不支持无理由退货。",
+      "expected_source": "return_policy.md",
+      "retrieved_sources": [],
+      "source_hit": false,
+      "latency_s": 10.51,
+      "error": "'NoneType' object has no attribute 'generate'"
+    },
+    {
+      "user_input": "超过7天还能退货吗？",
+      "retrieved_contexts": [],
+      "response": "ERROR: 'NoneType' object has no attribute 'generate'",
+      "reference": "如商品存在质量问题，签收后 15 天内仍可申请质量问题退货，需提供照片或视频凭证。",
+      "expected_source": "return_policy.md",
+      "retrieved_sources": [],
+      "source_hit": false,
+      "latency_s": 3.14,
+      "error": "'NoneType' object has no attribute 'generate'"
+    },
+    {
+      "user_input": "退货流程是怎样的？",
+      "retrieved_contexts": [],
+      "response": "ERROR: 'NoneType' object has no attribute 'generate'",
+      "reference": "在 App 中进入我的订单，选择订单点击申请售后，选择退货原因提交申请，审核通过后按系统发送的退货地址寄回商品并填写物流单号，仓库验收合格后退款在1-3个工作日内原路退回。",
+      "expected_source": "return_policy.md",
+      "retrieved_sources": [],
+      "source_hit": false,
+      "latency_s": 3.53,
+      "error": "'NoneType' object has no attribute 'generate'"
+    }
+  ]
+}
